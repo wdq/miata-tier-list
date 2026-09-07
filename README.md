@@ -14,13 +14,22 @@ python3 -m http.server 4173
 
 Then open <http://localhost:4173>.
 
+Install the development dependency and run the browser regression suite with:
+
+```sh
+npm install
+npm test
+```
+
+The test runner starts its own local server on port 4174.
+
 ## Deploy
 
 The workflow in `.github/workflows/pages.yml` deploys `main` to GitHub Pages. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**.
 
 ## Data and photos
 
-The catalog lives in `data/colors.js`. Research decisions, corrections, references, and photo behavior are documented in [`docs/CATALOG.md`](docs/CATALOG.md).
+The catalog lives in `data/colors.js`. Research decisions, corrections, and references are documented in [`docs/CATALOG.md`](docs/CATALOG.md). Photo selection standards and the latest 372-image visual audit are documented in [`docs/PHOTO_AUDIT.md`](docs/PHOTO_AUDIT.md).
 
 Use **Worldwide** for the complete catalog or **U.S. only** to remove finishes documented as exclusive to other markets. Generation and text filters only change the unranked catalog; they never hide ranked cards.
 
@@ -38,4 +47,12 @@ Validate the checked-in archive with:
 
 ```sh
 node scripts/validate-photos.mjs
+```
+
+For ongoing photo research and replacement:
+
+```sh
+node scripts/audit-photos.mjs
+node scripts/find-photo-candidates.mjs "1997 Mazda Miata Marina Green Mica"
+node scripts/replace-photo.mjs na-marina-green 1 IMAGE_URL SOURCE_PAGE "Source title"
 ```

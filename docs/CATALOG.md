@@ -10,7 +10,8 @@ Years are model years where practical. The global MX-5 launched during 1989 as a
 - Sunlight Silver Metallic, Cerrion Silver Metallic, and Highlight Silver Metallic
 - Metropolitan Gray Mica and Aquatic Blue Mica
 - Arctic White
-- Starlight Mica (not Starlight Blue Mica in the worldwide table)
+- Starlight Blue Mica (`A5`) for the 1996 M Edition
+- Marina Green Mica (`13C`) includes the 1997 U.S. M Edition as well as earlier selected-market availability
 - Aero Gray Metallic and Zircon Sand Metallic added to ND
 - Excellent Green Mica, Sparkle Green Metallic, and Platinum Pearl Mica added where applicable
 - Platinum Pearl Mica added to the NB for the UK Jasper Conran edition
@@ -32,7 +33,7 @@ Every color has four repository-hosted JPEGs under `assets/photos`. The manifest
 
 The ingestion script searches by generation, year, and exact paint name. It prefers original full-resolution JPEGs and falls back to a distinct cached JPEG when the source host blocks automated retrieval or returns another format. The deployed application loads only local files; external URLs are provenance links and are not runtime asset dependencies.
 
-Automated search cannot guarantee identical lighting or angle. Any future manual curation should preserve the manifest source fields and verify reuse rights before replacing an image.
+Automated search cannot guarantee identical lighting, angle, paint identity, or an unmodified car. The archive therefore also receives a full visual review; selection standards, exceptions, and maintenance commands are recorded in [the photo audit](PHOTO_AUDIT.md).
 
 ## Share URL format
 
