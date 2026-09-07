@@ -1,6 +1,6 @@
 # Miata Color Tier List
 
-A zero-build static site for ranking the global factory Mazda MX-5 Miata paint catalog from NA through ND. Rankings are compactly encoded in the URL hash, so a copied URL recreates the same board without a backend. Version 1 links remain supported.
+A zero-build static site for ranking the global factory Mazda MX-5 Miata paint catalog from NA through ND. Tier assignments and the order within each tier are compactly encoded in the URL hash, so a copied URL recreates the same board without a backend. Earlier version 1 and 2 links remain supported.
 
 Live site: <https://wdq.github.io/miata-tier-list/>
 

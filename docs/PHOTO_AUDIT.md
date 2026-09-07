@@ -24,7 +24,11 @@ The audit replaced 51 files across 18 galleries. Priority corrections included:
 - All four ND Blue Reflex Mica and Deep Crystal Blue Mica photos
 - Additional weak or incorrect images in Crystal White, Chaste White, Classic Red, Emerald Mica, Highlight Silver Metallic, Brilliant Black, Blazing Yellow Mica, Evolution Orange Mica, Meteor Gray Mica, and Aero Gray Metallic galleries
 
-Rare international colors do not always have surviving manufacturer photography or a current stock-car listing. In those cases, the best attributable archive or enthusiast source is retained and surfaced by the audit report for future replacement. Visual appearance alone is not treated as proof of a paint code.
+A second identity pass replaced another 54 files across 21 galleries. It corrected Vivid Yellow, Laguna Blue Mica, Montego Blue Mica, Twilight Blue Mica, Excellent Green Mica, Sparkle Green Metallic, Black Mica, Black Cherry Mica, British Racing Green, Classic Red, True Red, Velocity Red Mica, Aurora Blue Mica, Spirited Green Metallic, Crystal White Pearl Mica, Snowflake White Pearl Mica, Jet Black Mica, Eternal Blue Mica, and Artisan Red Metallic. The Vivid Yellow and Blazing Yellow galleries no longer share photos, and every replacement is tied to an exact-color listing, edition listing, or Mazda press set.
+
+Validation now rejects duplicate file content or duplicate original-image URLs across different colors. The editorial audit also flags a source that explicitly names another paint in the same generation, in addition to weak-source and modified-car warnings.
+
+Rare international colors do not always have surviving manufacturer photography or a current stock-car listing. In those cases, the best attributable archive or enthusiast source is retained and surfaced by the audit report for future replacement. After this pass, the report retains 18 source-quality flags, all on secondary gallery images; none are duplicate assets or sources that name a conflicting paint. Visual appearance alone is not treated as proof of a paint code.
 
 ## Maintenance
 

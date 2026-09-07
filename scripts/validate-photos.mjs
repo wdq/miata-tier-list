@@ -14,6 +14,8 @@ if (manifestIds.length !== expectedIds.size || manifestIds.some(id => !expectedI
 }
 
 let checked = 0;
+const globalHashes = new Map();
+const globalUrls = new Map();
 for (const color of colors) {
   const photos = manifest[color.id];
   if (!Array.isArray(photos) || photos.length !== 4) throw new Error(`${color.id} must have four photos.`);
@@ -23,6 +25,17 @@ for (const color of colors) {
     if (bytes.length < 2000 || bytes[0] !== 0xff || bytes[1] !== 0xd8) throw new Error(`${photo.file} is not a valid JPEG.`);
     const hash = createHash('sha256').update(bytes).digest('hex');
     if (hash !== photo.sha256) throw new Error(`${photo.file} does not match its manifest checksum.`);
+    const otherHash = globalHashes.get(hash);
+    if (otherHash && !otherHash.startsWith(`${color.id}/`)) {
+      throw new Error(`${color.id} and ${otherHash.split('/')[0]} reuse the same photo (${photo.file}).`);
+    }
+    globalHashes.set(hash, `${color.id}/${photo.file}`);
+    const normalizedUrl = new URL(photo.originalUrl).href;
+    const otherUrl = globalUrls.get(normalizedUrl);
+    if (otherUrl && !otherUrl.startsWith(`${color.id}/`)) {
+      throw new Error(`${color.id} and ${otherUrl.split('/')[0]} reuse the same source image (${normalizedUrl}).`);
+    }
+    globalUrls.set(normalizedUrl, `${color.id}/${photo.file}`);
     hashes.add(hash);
     checked += 1;
   }

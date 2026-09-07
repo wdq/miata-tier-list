@@ -16,7 +16,8 @@ const blockedHosts = [
   'wallpaperset.com',
   'youtube.com'
 ];
-const modificationTerms = /body\s?kit|custom|drift|flame|modified|race car|racing livery|supercharged|turbocharged|widebody/i;
+const modificationTerms = /\b(?:body\s?kit|custom|drift|flame|modified|race car|racing livery|supercharged|turbocharged|widebody)\b/i;
+const normalizedName = name => name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
 const strict = process.argv.includes('--strict');
 let issueCount = 0;
@@ -28,6 +29,15 @@ for (const color of colors) {
     const issues = [];
     if (blockedHosts.some(blocked => host.includes(blocked))) issues.push(`weak source: ${host}`);
     if (modificationTerms.test(photo.title)) issues.push('possible modified car');
+    const evidence = normalizedName(`${photo.title} ${photo.sourcePage}`);
+    const expected = normalizedName(color.name);
+    const conflictingColor = colors.find(other => {
+      if (other.id === color.id || other.generation !== color.generation) return false;
+      const conflicting = normalizedName(other.name);
+      if (expected.includes(conflicting) || conflicting.includes(expected)) return false;
+      return conflicting.length >= 8 && evidence.includes(conflicting) && !evidence.includes(expected);
+    });
+    if (conflictingColor) issues.push(`source names ${conflictingColor.name}`);
     if (issues.length) {
       issueCount += issues.length;
       console.log(`${color.id}/${index}: ${issues.join('; ')} (${photo.sourcePage})`);

@@ -14,6 +14,7 @@ Years are model years where practical. The global MX-5 launched during 1989 as a
 - Marina Green Mica (`13C`) includes the 1997 U.S. M Edition as well as earlier selected-market availability
 - Aero Gray Metallic and Zircon Sand Metallic added to ND
 - Excellent Green Mica, Sparkle Green Metallic, and Platinum Pearl Mica added where applicable
+- Excellent Green Mica (`11Q`) corrected to the 1995–1996 Japan-market VR Limited Combination B
 - Platinum Pearl Mica added to the NB for the UK Jasper Conran edition
 
 ## Research references
@@ -37,4 +38,4 @@ Automated search cannot guarantee identical lighting, angle, paint identity, or 
 
 ## Share URL format
 
-Version 2 stores one tier digit per stable catalog entry (`0` for unranked and `1` through `5` for S through D). A complete 93-color ranking is about 120 characters including the page address. The reader retains support for the original version 1 ID-list format so previously shared links continue to load.
+Version 3 stores the ordered color indexes for each tier as compact two-character base-36 values. This preserves both tier assignment and the user-defined order while keeping a complete 93-color ranking well below typical browser URL limits. The reader retains support for the original version 1 ID-list format and version 2 tier digits, so previously shared links continue to load.

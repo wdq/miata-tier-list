@@ -42,3 +42,38 @@ test('a full 93-color ranking survives a shared URL', async ({ page }) => {
   await expect(page.locator('#count')).toContainText('93 ranked');
   await expect(page.locator('.board .card')).toHaveCount(93);
 });
+
+test('an ordered full 93-color ranking survives a version 3 URL', async ({ page }) => {
+  const reversed = Array.from({ length: 93 }, (_, index) => (92 - index).toString(36).padStart(2, '0')).join('');
+  await page.goto(`/#v=3&o=${reversed}....`);
+  const cards = page.locator('[data-tier="s"] .card');
+  await expect(cards).toHaveCount(93);
+  await expect(cards.first()).toHaveAttribute('data-id', 'nd-zircon-sand');
+  await expect(cards.last()).toHaveAttribute('data-id', 'na-crystal-white');
+});
+
+test('colors can be reordered within a tier and the order survives reload', async ({ page }) => {
+  await page.goto(`/#v=2&r=111${'0'.repeat(90)}`);
+  const cards = page.locator('[data-tier="s"] .card');
+  await expect(cards).toHaveCount(3);
+  await expect(cards.nth(0)).toHaveAttribute('data-id', 'na-crystal-white');
+
+  await page.evaluate(() => {
+    const source = document.querySelector('[data-tier="s"] [data-id="na-silver-stone"]');
+    const target = document.querySelector('[data-tier="s"] [data-id="na-crystal-white"]');
+    const dataTransfer = new DataTransfer();
+    source.dispatchEvent(new DragEvent('dragstart', { bubbles: true, dataTransfer }));
+    target.dispatchEvent(new DragEvent('drop', {
+      bubbles: true,
+      clientX: target.getBoundingClientRect().left,
+      dataTransfer
+    }));
+    source.dispatchEvent(new DragEvent('dragend', { bubbles: true, dataTransfer }));
+  });
+
+  await expect(cards.nth(0)).toHaveAttribute('data-id', 'na-silver-stone');
+  await expect(page).toHaveURL(/#v=3&o=/);
+  await page.reload();
+  await expect(cards.nth(0)).toHaveAttribute('data-id', 'na-silver-stone');
+  await expect(cards.nth(1)).toHaveAttribute('data-id', 'na-crystal-white');
+});

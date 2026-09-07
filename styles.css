@@ -21,6 +21,8 @@ header{min-height:58px;justify-content:flex-end;padding-block:8px}
 .label strong{display:block;min-height:31px}
 .label>div{display:flex;justify-content:space-between;gap:8px;margin-top:3px}
 .label>div span:first-child{font-family:inherit}
+.drop .card.insert-before{box-shadow:-5px 0 0 var(--focus)}
+.drop .card.insert-after{box-shadow:5px 0 0 var(--focus)}
 
 @media(max-width:900px){.toolbar{grid-template-columns:1fr 1fr}.search{grid-column:1/-1}#count{justify-self:start}}
 @media(max-width:760px){header{min-height:56px}.intro{padding-top:22px}.toolbar{grid-template-columns:1fr}.search{grid-column:auto}.region-filter button{min-width:0}.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.label strong{min-height:46px}.generation-group{margin-bottom:28px}}
