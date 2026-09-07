@@ -28,6 +28,10 @@ Years are model years where practical. The global MX-5 launched during 1989 as a
 
 ## Photo behavior
 
-Cards request query-specific real-photo thumbnails from Bing Images at display time. Each query includes generation, factory paint name, an applicable year, and a front three-quarter preference. The viewer offers four results and links to the search page so the image source can be inspected. No third-party photo is copied into this repository.
+Cards request query-specific real-photo thumbnails from Bing Images at display time. Each query includes generation, factory paint name, an applicable year, and an angle preference. The viewer requests distinct front three-quarter, side profile, rear three-quarter, and outdoor results, and links to the active search so the image source can be inspected. No third-party photo is copied into this repository.
 
 Image-search results can change and cannot guarantee identical lighting or angle. A future curated-photo pass should only check images into the repository when reuse rights and attribution have been verified.
+
+## Share URL format
+
+Version 2 stores one tier digit per stable catalog entry (`0` for unranked and `1` through `5` for S through D). A complete 93-color ranking is about 120 characters including the page address. The reader retains support for the original version 1 ID-list format so previously shared links continue to load.
