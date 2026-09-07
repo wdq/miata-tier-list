@@ -26,11 +26,13 @@ Years are model years where practical. The global MX-5 launched during 1989 as a
 - [Mazda USA 2017 MX-5 specification deck](https://news.mazdausa.com/download/2017-Mazda-MX-5-spec-deck.pdf)
 - [Mazda USA 2026 MX-5 colors](https://news.mazdausa.com/vehicles-2026-mx-5)
 
-## Photo behavior
+## Photo archive
 
-Cards request query-specific real-photo thumbnails from Bing Images at display time. Each query includes generation, factory paint name, an applicable year, and an angle preference. The viewer requests distinct front three-quarter, side profile, rear three-quarter, and outdoor results, and links to the active search so the image source can be inspected. No third-party photo is copied into this repository.
+Every color has four repository-hosted JPEGs under `assets/photos`. The manifest records the source page, original image URL, result title, reported dimensions, archived file size, SHA-256 checksum, and whether the original or search-cache copy was archived.
 
-Image-search results can change and cannot guarantee identical lighting or angle. A future curated-photo pass should only check images into the repository when reuse rights and attribution have been verified.
+The ingestion script searches by generation, year, and exact paint name. It prefers original full-resolution JPEGs and falls back to a distinct cached JPEG when the source host blocks automated retrieval or returns another format. The deployed application loads only local files; external URLs are provenance links and are not runtime asset dependencies.
+
+Automated search cannot guarantee identical lighting or angle. Any future manual curation should preserve the manifest source fields and verify reuse rights before replacing an image.
 
 ## Share URL format
 

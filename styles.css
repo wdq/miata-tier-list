@@ -6,7 +6,9 @@ dialog{width:min(1080px,calc(100vw - 32px));max-height:calc(100vh - 32px);paddin
 /* Catalog grouping and compact utility header. */
 header{min-height:58px;justify-content:flex-end;padding-block:8px}
 .intro{min-height:164px;padding-top:26px}
-.toolbar{grid-template-columns:auto auto minmax(210px,360px) 1fr}
+.toolbar{grid-template-columns:auto auto minmax(210px,1fr) auto}
+.toolbar-actions{display:flex;justify-content:flex-end;gap:8px}
+.toolbar #count{grid-column:1/-1;justify-self:start;margin-top:-7px}
 .region-filter button{min-width:82px}
 .catalog{display:block;min-height:170px}
 .generation-group{margin-bottom:34px}

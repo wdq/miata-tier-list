@@ -24,4 +24,18 @@ The catalog lives in `data/colors.js`. Research decisions, corrections, referenc
 
 Use **Worldwide** for the complete catalog or **U.S. only** to remove finishes documented as exclusive to other markets. Generation and text filters only change the unranked catalog; they never hide ranked cards.
 
-The site has no build dependencies. Third-party photos are requested as Bing Images thumbnails and remain hosted externally; no third-party image files are stored in this repository.
+The deployed site has no build dependencies or runtime image dependencies. Its 372 photos are stored under `assets/photos`, with source URLs, checksums, reported dimensions, and fallback status recorded in `assets/photos/manifest.json`.
+
+To rebuild the archive:
+
+```sh
+node scripts/download-photos.mjs
+```
+
+The downloader prefers each original JPEG and uses a search-cache JPEG only when an original host blocks the request or returns another format.
+
+Validate the checked-in archive with:
+
+```sh
+node scripts/validate-photos.mjs
+```
